@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Teo Yi Rou | DAS Portfolio – Accountancy</title>
+<style>
+  :root {
+    --navy: #1a2e4a;
+    --teal: #1d7a8a;
+    --gold: #c9a84c;
+    --light: #f4f7fa;
+    --white: #ffffff;
+    --text: #2d3748;
+    --muted: #6b7280;
+    --border: #e2e8f0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Segoe UI',system-ui,sans-serif;color:var(--text);background:var(--light);}
+
+  /* NAV */
+  nav{position:fixed;top:0;width:100%;background:var(--navy);z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.3);}
+  .nav-inner{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;}
+  .nav-logo{color:var(--gold);font-weight:700;font-size:1rem;letter-spacing:.5px;}
+  .nav-links{display:flex;gap:24px;list-style:none;}
+  .nav-links a{color:#cbd5e0;text-decoration:none;font-size:.85rem;letter-spacing:.3px;transition:color .2s;}
+  .nav-links a:hover{color:var(--gold);}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,#254060 60%,#1d5c70 100%);color:white;padding:120px 24px 80px;text-align:center;}
+  .hero-badge{display:inline-block;background:rgba(201,168,76,.15);border:1px solid var(--gold);color:var(--gold);font-size:.78rem;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:20px;}
+  .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;letter-spacing:-1px;margin-bottom:8px;}
+  .hero h2{font-size:clamp(.95rem,2vw,1.2rem);color:#90cdf4;font-weight:400;margin-bottom:20px;}
+  .hero-school{color:#a0aec0;font-size:.9rem;margin-bottom:32px;}
+  .hero-tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:36px;}
+  .tag{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#e2e8f0;padding:6px 14px;border-radius:20px;font-size:.8rem;}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy);padding:12px 28px;border-radius:6px;font-weight:700;text-decoration:none;font-size:.9rem;transition:background .2s,transform .2s;}
+  .btn:hover{background:#e0b84c;transform:translateY(-2px);}
+
+  /* SECTIONS */
+  section{max-width:1000px;margin:auto;padding:72px 24px;}
+  .section-label{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:8px;}
+  .section-title{font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--navy);margin-bottom:8px;}
+  .section-divider{width:48px;height:3px;background:var(--gold);border-radius:2px;margin-bottom:32px;}
+  .section-bg{background:white;}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  .about-card{background:var(--light);border-left:4px solid var(--teal);padding:24px;border-radius:8px;}
+  .about-card h3{font-size:1rem;color:var(--navy);font-weight:700;margin-bottom:12px;}
+  .about-card p{font-size:.9rem;line-height:1.8;color:var(--text);}
+  @media(max-width:640px){.about-grid{grid-template-columns:1fr;}}
+
+  /* QUOTE */
+  .quote-block{background:var(--navy);color:white;padding:40px;border-radius:12px;margin-top:32px;position:relative;}
+  .quote-block::before{content:'"';font-size:5rem;color:var(--gold);opacity:.3;position:absolute;top:-10px;left:20px;line-height:1;}
+  .quote-block p{font-size:1.05rem;line-height:1.85;font-style:italic;padding-left:16px;}
+  .quote-block cite{display:block;margin-top:16px;font-size:.82rem;color:var(--gold);font-style:normal;padding-left:16px;}
+
+  /* LEADERSHIP */
+  .role-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+  .role-card{background:white;border:1px solid var(--border);border-radius:10px;padding:24px;transition:box-shadow .2s,transform .2s;}
+  .role-card:hover{box-shadow:0 8px 24px rgba(0,0,0,.1);transform:translateY(-3px);}
+  .role-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--teal),var(--navy));border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:1.2rem;}
+  .role-card h3{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:8px;}
+  .role-card p{font-size:.85rem;color:var(--muted);line-height:1.7;}
+
+  /* TIMELINE */
+  .timeline{position:relative;padding-left:28px;}
+  .timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--border);}
+  .tl-item{position:relative;margin-bottom:20px;}
+  .tl-item::before{content:'';position:absolute;left:-24px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--teal);border:2px solid white;box-shadow:0 0 0 2px var(--teal);}
+  .tl-year{font-size:.75rem;color:var(--gold);font-weight:700;letter-spacing:.5px;margin-bottom:2px;}
+  .tl-title{font-size:.88rem;color:var(--text);font-weight:600;}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+  .skill-card{background:white;border:1px solid var(--border);border-radius:10px;padding:20px 24px;}
+  .skill-card h4{font-size:.88rem;font-weight:700;color:var(--navy);margin-bottom:10px;}
+  .skill-bar{background:var(--light);border-radius:20px;height:6px;overflow:hidden;margin-bottom:6px;}
+  .skill-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:20px;}
+  .skill-label{font-size:.75rem;color:var(--muted);}
+
+  /* VIA */
+  .via-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+  .via-card{background:white;border:1px solid var(--border);border-radius:8px;padding:20px;text-align:center;}
+  .via-card .year{font-size:.75rem;color:var(--gold);font-weight:700;margin-bottom:6px;}
+  .via-card p{font-size:.85rem;color:var(--text);font-weight:600;}
+
+  /* MICRO */
+  .micro-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+  .micro-card{background:white;border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;padding:20px;}
+  .micro-card h4{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:6px;}
+  .micro-card p{font-size:.82rem;color:var(--muted);line-height:1.6;}
+
+  /* HIGHLIGHT BOX */
+  .highlight-box{background:linear-gradient(135deg,#eaf6f8,#fff8e7);border:1px solid #b2dfdb;border-radius:12px;padding:32px;margin-bottom:32px;}
+  .highlight-box h3{color:var(--teal);font-size:1rem;margin-bottom:10px;}
+  .highlight-box p{font-size:.9rem;line-height:1.8;color:var(--text);}
+
+  /* GOALS */
+  .goals-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .goal-card{background:white;border:1px solid var(--border);border-radius:10px;padding:28px;}
+  .goal-card .g-icon{font-size:1.8rem;margin-bottom:12px;}
+  .goal-card h3{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:10px;}
+  .goal-card p{font-size:.88rem;line-height:1.75;color:var(--text);}
+  @media(max-width:600px){.goals-grid{grid-template-columns:1fr;}}
+
+  /* FOOTER */
+  footer{background:var(--navy);color:#a0aec0;text-align:center;padding:40px 24px;}
+  footer strong{color:var(--gold);}
+  footer p{font-size:.85rem;margin-bottom:6px;}
+
+  /* CHIP */
+  .chip{display:inline-block;background:#e8f5f7;color:var(--teal);font-size:.75rem;font-weight:600;padding:3px 10px;border-radius:20px;margin:3px 2px;}
+  .chip-gold{background:#fff8e7;color:#a07020;}
+
+  /* SYF badge */
+  .award-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#fff8e7,#fef3c7);border:1px solid var(--gold);border-radius:8px;padding:10px 18px;font-size:.88rem;font-weight:700;color:#92670a;}
+  .award-badge span{font-size:1.3rem;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">TEO YI ROU &nbsp;·&nbsp; DAS Portfolio</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#goals">Goals</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Direct Admission Scheme · Accountancy</div>
+  <h1>Teo Yi Rou</h1>
+  <h2>Aspiring Accountancy Professional</h2>
+  <p class="hero-school">Mayflower Secondary School &nbsp;·&nbsp; Ngee Ann Polytechnic Applicant</p>
+  <div class="hero-tags">
+    <span class="tag">🎭 CCA President – Chinese Dance</span>
+    <span class="tag">🏆 SYF 2025 Distinction</span>
+    <span class="tag">🎓 Student Councillor</span>
+    <span class="tag">🌟 Arts Ambassador</span>
+    <span class="tag">📡 Radio Presenter</span>
+  </div>
+  <a href="#about" class="btn">View My Portfolio</a>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">Who I Am</p>
+  <h2 class="section-title">About Me</h2>
+  <div class="section-divider"></div>
+  <div class="about-grid">
+    <div class="about-card">
+      <h3>My Passion for Accounting</h3>
+      <p>I see Accounting as more than working with numbers — it is about understanding the information behind every decision. Financial records reflect how organisations plan, manage resources, and create sustainable growth. I am drawn to how accounting transforms data into meaningful insights that support responsible decision-making.</p>
+    </div>
+    <div class="about-card">
+      <h3>My Character & Strengths</h3>
+      <p>I am naturally organised and enjoy analysing information, identifying patterns, and understanding how different factors influence outcomes. Seven years of Chinese Dance and student leadership have shaped me into a disciplined, meticulous individual with a strong sense of accountability and integrity.</p>
+    </div>
+  </div>
+  <div class="quote-block">
+    <p>Accounting represents the connection between logical thinking, responsibility, and real-world impact. I hope to continue developing the discipline, integrity, and skills needed to grow into a trusted accounting professional.</p>
+    <cite>— Teo Yi Rou</cite>
+  </div>
+</section>
+
+<!-- WHY NP -->
+<div style="background:white;">
+<section style="padding-top:64px;padding-bottom:64px;max-width:1000px;margin:auto;padding-left:24px;padding-right:24px;">
+  <p class="section-label">Why Ngee Ann Polytechnic</p>
+  <h2 class="section-title">Why NP Accountancy</h2>
+  <div class="section-divider"></div>
+  <div class="highlight-box">
+    <h3>Strong Foundation + Practical Learning</h3>
+    <p>I am particularly interested in NP's Accountancy course because it combines strong accounting foundations with real-world application. What attracts me most is understanding how financial information is prepared, analysed, and used to guide business decisions — not just recording transactions.</p>
+  </div>
+  <div class="highlight-box" style="margin-bottom:0;">
+    <h3>Collaborative Environment</h3>
+    <p>NP's emphasis on hands-on learning and industry-relevant skills aligns with my learning style — I learn best through applying concepts, solving problems, and collaborating with others. I value NP's environment where students learn from different perspectives, which will help me grow the teamwork and communication skills essential in accounting.</p>
+  </div>
+</section>
+</div>
+
+<!-- LEADERSHIP -->
+<section id="leadership">
+  <p class="section-label">Extracurricular Excellence</p>
+  <h2 class="section-title">Leadership & Roles</h2>
+  <div class="section-divider"></div>
+  <div class="role-grid">
+
+    <div class="role-card">
+      <div class="role-icon">🎭</div>
+      <h3>President – Chinese Dance CCA</h3>
+      <p>Led the CCA through major performances including SYF 2025 (Distinction) and Chinese Dance Fiesta @ Esplanade. Coordinated practices, guided junior members, and ensured performances were well-prepared. Developed organisational accuracy, discipline, and team management.</p>
+      <div style="margin-top:12px;">
+        <span class="chip">SYF Distinction 2025</span>
+        <span class="chip">Esplanade 2024 & 2025</span>
+        <span class="chip">7 Years Dance</span>
+      </div>
+    </div>
+
+    <div class="role-card">
+      <div class="role-icon">🎓</div>
+      <h3>Student Councillor</h3>
+      <p>Represented peers, supported school initiatives, and co-organised events including the 24-Hour Challenge and leadership camps. Developed integrity, accountability, and the ability to consider multiple perspectives before making decisions.</p>
+      <div style="margin-top:12px;">
+        <span class="chip">24H Challenge 2025</span>
+        <span class="chip">Future Ready Challenge</span>
+        <span class="chip">Presidential Election</span>
+      </div>
+    </div>
+
+    <div class="role-card">
+      <div class="role-icon">🎨</div>
+      <h3>Arts Ambassador</h3>
+      <p>Evaluated performers during school arts events as a Casting Evaluator. Required objective assessment, critical thinking, and responsible decision-making — strengthening attention to detail and analytical skills directly relevant to accounting.</p>
+      <div style="margin-top:12px;">
+        <span class="chip">Tea Time Concert</span>
+        <span class="chip">HK Student Exchange</span>
+        <span class="chip">Casting Evaluator</span>
+      </div>
+    </div>
+
+    <div class="role-card">
+      <div class="role-icon">💻</div>
+      <h3>Cyber Wellness Ambassador</h3>
+      <p>Developed presentations promoting responsible online behaviour. Researched relevant issues, selected appropriate content, and shaped key messages — building skills in information handling, accuracy, and responsible communication.</p>
+      <div style="margin-top:12px;">
+        <span class="chip">Presentation Dev Team</span>
+        <span class="chip">Digital Literacy</span>
+      </div>
+    </div>
+
+    <div class="role-card">
+      <div class="role-icon">📢</div>
+      <h3>English Representative</h3>
+      <p>Coordinated class tasks, ensured clear communication, and organised responsibilities across peers. Strengthened dependability, structured thinking, and the ability to work with different individuals effectively.</p>
+      <div style="margin-top:12px;">
+        <span class="chip">2023 – 2024</span>
+        <span class="chip">Communication</span>
+      </div>
+    </div>
+
+    <div class="role-card">
+      <div class="role-icon">🏃</div>
+      <h3>Class Committee Member</h3>
+      <p>Supported recurring school events including Inter-Class Games, Cross Country, and Dance Competition across four years. Managed participation logistics, relayed instructions, and ensured smooth coordination — reinforcing preparation, accuracy, and consistency.</p>
+      <div style="margin-top:12px;">
+        <span class="chip">2023 – 2026</span>
+        <span class="chip">MOE Minister Dialogue</span>
+        <span class="chip">Creative Bins Project</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS / TIMELINE -->
+<div style="background:white;">
+<section id="achievements" style="padding-top:64px;padding-bottom:64px;max-width:1000px;margin:auto;padding-left:24px;padding-right:24px;">
+  <p class="section-label">Track Record</p>
+  <h2 class="section-title">Performances & Achievements</h2>
+  <div class="section-divider"></div>
+
+  <div style="text-align:center;margin-bottom:36px;">
+    <div class="award-badge"><span>🏆</span> Singapore Youth Festival (SYF) 2025 – DISTINCTION</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;">
+    <div>
+      <h3 style="color:var(--navy);font-size:.95rem;font-weight:700;margin-bottom:16px;">2026 Events</h3>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-year">2026</div><div class="tl-title">Aesthetic Production: Signal Reconnect</div></div>
+        <div class="tl-item"><div class="tl-year">2026</div><div class="tl-title">Youth Leadership Dance Camp: Amplified</div></div>
+        <div class="tl-item"><div class="tl-year">2026</div><div class="tl-title">Student Leader Investiture</div></div>
+        <div class="tl-item"><div class="tl-year">2026</div><div class="tl-title">Chinese New Year Celebration</div></div>
+        <div class="tl-item"><div class="tl-year">2026</div><div class="tl-title">Mayflower Inter-Class Games</div></div>
+      </div>
+      <h3 style="color:var(--navy);font-size:.95rem;font-weight:700;margin-top:24px;margin-bottom:16px;">2025 Events</h3>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-year">2025</div><div class="tl-title">🏆 Singapore Youth Festival – Distinction</div></div>
+        <div class="tl-item"><div class="tl-year">2025</div><div class="tl-title">Chinese Dance Fiesta @ Esplanade (SCDT)</div></div>
+        <div class="tl-item"><div class="tl-year">2025</div><div class="tl-title">Aesthetic Production: The Museum</div></div>
+        <div class="tl-item"><div class="tl-year">2025</div><div class="tl-title">Teacher's Day & CNY Performances</div></div>
+        <div class="tl-item"><div class="tl-year">2025</div><div class="tl-title">Inter-school Future Ready Challenge</div></div>
+        <div class="tl-item"><div class="tl-year">2025</div><div class="tl-title">24-Hour Challenge (Anderson Sec)</div></div>
+      </div>
+    </div>
+    <div>
+      <h3 style="color:var(--navy);font-size:.95rem;font-weight:700;margin-bottom:16px;">2024 Events</h3>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-year">2024</div><div class="tl-title">Chinese Dance Fiesta @ Esplanade (SCDT)</div></div>
+        <div class="tl-item"><div class="tl-year">2024</div><div class="tl-title">Mayflower Dance Recital: The Dance Tapestry</div></div>
+        <div class="tl-item"><div class="tl-year">2024</div><div class="tl-title">AMK Sec Production: NOMAD</div></div>
+        <div class="tl-item"><div class="tl-year">2024</div><div class="tl-title">Kebun Baru CC CNY Dinner & National Day</div></div>
+        <div class="tl-item"><div class="tl-year">2024</div><div class="tl-title">HK Student Exchange Programme</div></div>
+        <div class="tl-item"><div class="tl-year">2024</div><div class="tl-title">Leadership Camp Facilitator</div></div>
+      </div>
+      <h3 style="color:var(--navy);font-size:.95rem;font-weight:700;margin-top:24px;margin-bottom:16px;">2023 Events</h3>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-year">2023</div><div class="tl-title">Mayflower Tea Time Concert</div></div>
+        <div class="tl-item"><div class="tl-year">2023</div><div class="tl-title">SEP Archery</div></div>
+        <div class="tl-item"><div class="tl-year">2023</div><div class="tl-title">Kebun Baru CC National Day Observance</div></div>
+        <div class="tl-item"><div class="tl-year">2023</div><div class="tl-title">Teacher's Day Performance</div></div>
+        <div class="tl-item"><div class="tl-year">2023</div><div class="tl-title">Sec 1 Cohort Camp</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- VIA -->
+<section>
+  <p class="section-label">Community Service</p>
+  <h2 class="section-title">Values In Action (VIA)</h2>
+  <div class="section-divider"></div>
+  <div class="via-list">
+    <div class="via-card"><div class="year">2026</div><p>Total Defence: Leaving a Legacy</p></div>
+    <div class="via-card"><div class="year">2025</div><p>Walking in Y(our) Shoes</p></div>
+    <div class="via-card"><div class="year">2024</div><p>Intergenerational Bonding</p></div>
+    <div class="via-card"><div class="year">2023</div><p>School @ Heart</p></div>
+  </div>
+  <p style="margin-top:20px;font-size:.9rem;color:var(--muted);line-height:1.8;">Through VIA, I developed empathy and awareness of challenges faced by different groups in society — especially the elderly. These experiences shaped me into a more considerate, reflective, and socially responsible individual, qualities that underpin ethical decision-making in the accounting profession.</p>
+</section>
+
+<!-- SKILLS -->
+<div style="background:white;">
+<section id="skills" style="padding-top:64px;padding-bottom:64px;max-width:1000px;margin:auto;padding-left:24px;padding-right:24px;">
+  <p class="section-label">Core Competencies</p>
+  <h2 class="section-title">Skills & Micro-Learning</h2>
+  <div class="section-divider"></div>
+
+  <div class="skills-grid" style="margin-bottom:40px;">
+    <div class="skill-card">
+      <h4>Organisation & Attention to Detail</h4>
+      <div class="skill-bar"><div class="skill-fill" style="width:92%;"></div></div>
+      <p class="skill-label">Refined through 4 years of event coordination</p>
+    </div>
+    <div class="skill-card">
+      <h4>Leadership & Team Management</h4>
+      <div class="skill-bar"><div class="skill-fill" style="width:90%;"></div></div>
+      <p class="skill-label">CCA President & Student Councillor</p>
+    </div>
+    <div class="skill-card">
+      <h4>Analytical & Critical Thinking</h4>
+      <div class="skill-bar"><div class="skill-fill" style="width:85%;"></div></div>
+      <p class="skill-label">Science programmes & Arts Ambassador evaluations</p>
+    </div>
+    <div class="skill-card">
+      <h4>Communication & Presentation</h4>
+      <div class="skill-bar"><div class="skill-fill" style="width:88%;"></div></div>
+      <p class="skill-label">Radio Presenter, Speech & Drama, Journalism</p>
+    </div>
+    <div class="skill-card">
+      <h4>Integrity & Accountability</h4>
+      <div class="skill-bar"><div class="skill-fill" style="width:95%;"></div></div>
+      <p class="skill-label">Core value across all leadership roles</p>
+    </div>
+    <div class="skill-card">
+      <h4>Initiative & Self-Learning</h4>
+      <div class="skill-bar"><div class="skill-fill" style="width:82%;"></div></div>
+      <p class="skill-label">Acorn Training ApLM & independent learning</p>
+    </div>
+  </div>
+
+  <h3 style="color:var(--navy);font-size:1rem;font-weight:700;margin-bottom:20px;">Programmes & Micro-Learning</h3>
+  <div class="micro-grid">
+    <div class="micro-card"><h4>📡 Mass Media – Radio Presenter</h4><p>Developed confidence in communicating clearly, organising information, and presenting ideas concisely — directly applicable to explaining financial information to stakeholders.</p></div>
+    <div class="micro-card"><h4>📰 ALP Journalism & Broadcasting</h4><p>Researched, organised, and verified information before presenting it — building attention to accuracy and integrity when handling information.</p></div>
+    <div class="micro-card"><h4>🎭 English ALP – Speech & Drama</h4><p>Improved confidence, expression, and collaboration. Learnt to adapt communication style depending on audience — essential in professional accounting.</p></div>
+    <div class="micro-card"><h4>🔬 Microbiology Workshop – NJC</h4><p>Learnt scientific investigation and the importance of accuracy when collecting and interpreting information. Strengthened systematic working habits.</p></div>
+    <div class="micro-card"><h4>🧠 Acorn Training ApLM</h4><p>Developed solutions for societal challenges — strengthening creativity, critical thinking, and logical problem-solving approaches.</p></div>
+    <div class="micro-card"><h4>🔭 Science in Action Programme</h4><p>Practised applying knowledge to real-world challenges, evaluating information, and considering multiple perspectives before reaching conclusions.</p></div>
+  </div>
+</section>
+</div>
+
+<!-- GOALS -->
+<section id="goals">
+  <p class="section-label">Looking Ahead</p>
+  <h2 class="section-title">Future Goals</h2>
+  <div class="section-divider"></div>
+  <div class="goals-grid">
+    <div class="goal-card">
+      <div class="g-icon">🎯</div>
+      <h3>Short-Term Goals</h3>
+      <p>Build a strong foundation in accounting principles, financial management, and business operations. Develop the ability to analyse information carefully and apply accounting knowledge to real-world situations, while growing in professional communication and teamwork.</p>
+    </div>
+    <div class="goal-card">
+      <div class="g-icon">🚀</div>
+      <h3>Long-Term Aspirations</h3>
+      <p>Pursue a career in accounting, auditing, or finance — contributing through responsible management of financial information and ethical decision-making. I aspire to grow into a trusted accounting professional who supports organisations in making sound, evidence-based decisions.</p>
+    </div>
+  </div>
+  <div class="quote-block" style="margin-top:32px;">
+    <p>I believe that my discipline, curiosity, and commitment to continuous improvement will allow me to contribute positively to the Accountancy course at Ngee Ann Polytechnic and to the accounting profession beyond.</p>
+    <cite>— Teo Yi Rou, Mayflower Secondary School</cite>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Teo Yi Rou</strong> &nbsp;·&nbsp; Direct Admission Scheme Application</p>
+  <p>Mayflower Secondary School &nbsp;·&nbsp; Applying to Ngee Ann Polytechnic – Accountancy</p>
+  <p style="margin-top:12px;font-size:.78rem;color:#718096;">Portfolio prepared for the NP DAS Interview Process · 2026</p>
+</footer>
+
+</body>
+</html>
